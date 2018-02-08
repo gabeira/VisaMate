@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Visa Mate</string>
+
+    <string name="action_settings">Configurações</string>
+
+    <string name="how_to_study">Como obter o visto para estudar</string>
+    <string name="how_to_work">Como obter o visto de trabalho</string>
+    <string name="how_to_live">Como obter o visto para viver permanentemente</string>
+    <string name="how_to_visit">Como obter o visto para visitar a Austrália</string>
+    <string name="schools_available">Escolas disponíveis</string>
+    <string name="disclaimer">Esta app usa informações do site do Governo Australiano,\n use um agente autorizado para avaliar o seu caso...</string>
+    <string name="swipe_for_visas">Swipe to check other visa types</string>
+
+</resources>

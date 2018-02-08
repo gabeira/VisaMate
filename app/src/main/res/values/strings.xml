@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Visa Mate</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="how_to_study">How to get the Student visa</string>
+    <string name="how_to_work">How to get the Working Visa</string>
+    <string name="how_to_live">How to get the Permanent Visa</string>
+    <string name="how_to_visit">How to get the Tourist Visa</string>
+    <string name="schools_available">Available Schools</string>
+    <string name="disclaimer">This app uses government data, for your case please consult an agent...</string>
+    <string name="swipe_for_visas">Swipe to check other visa types</string>
+
+</resources>
