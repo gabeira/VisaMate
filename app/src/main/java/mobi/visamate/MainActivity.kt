@@ -1,12 +1,18 @@
 package mobi.visamate
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
+import mobi.visamate.model.Contributor
 import mobi.visamate.view.adapter.SectionsPagerAdapter
+import mobi.visamate.viewmodel.ContributorsViewModel
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,6 +43,14 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }
 
+
+        //TODO move this to a unit test and use it on another Activity/Fragment for Contributors
+        val mLiveDataTimerViewModel = ViewModelProviders.of(this).get(ContributorsViewModel::class.java!!)
+        mLiveDataTimerViewModel.getContributorsObserver().observe(this, Observer<List<Contributor>> { listOfContributors ->
+            for (cont: Contributor in listOfContributors!!) {
+                Log.d("Contributor", "Login: " + cont.login + " Contributions: " + cont.contributions)
+            }
+        })
     }
 
 
@@ -53,6 +67,10 @@ class MainActivity : AppCompatActivity() {
         val id = item.itemId
 
         if (id == R.id.action_settings) {
+            return true
+        }
+        if (id == R.id.action_contributors) {
+            //TODO Create an Activity to show the Colaborators list
             return true
         }
 
