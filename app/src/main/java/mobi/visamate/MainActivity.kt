@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import mobi.visamate.model.Contributor
 import mobi.visamate.view.adapter.SectionsPagerAdapter
@@ -51,6 +54,16 @@ class MainActivity : AppCompatActivity() {
                 Log.d("Contributor", "Login: " + cont.login + " Contributions: " + cont.contributions)
             }
         })
+
+        //TODO move this to a unit test and use it later
+        //https://github.com/ReactiveX/RxJava
+        Observable.just("one", "two", "three", "four", "five")
+                .subscribeOn(Schedulers.newThread())
+                .filter { item -> item == "one" }
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::handleResponse, this::handleError)
+//                .subscribe { onNext -> Log.e("Main", "In Line Data: $onNext") }
+
     }
 
 
@@ -77,5 +90,19 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+
+    /**
+     *  Handle function to handle the data received from RX
+     */
+    private fun handleResponse(received: String) {
+        Log.e("Main", "Data: $received")
+    }
+
+    /**
+     * Handle RX error
+     */
+    private fun handleError(error: Throwable) {
+        Log.e("Main", "Error Data: ${error.localizedMessage}")
+    }
 
 }
